@@ -1,10 +1,15 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Agenda_Consulta_Web.Models
 {
     public class Profissional : Pessoa 
     {
+        [Required]
+        [Display(Name = "CRM")]
         public string ResgistroProfissional { get; set; }
+
+        [Required]
         public string Especialidade { get; set; }
         
         //Dias da semana
@@ -15,8 +20,12 @@ namespace Agenda_Consulta_Web.Models
         public bool? Quinta { get; set; }
         public bool? Sexta { get; set; }
         public bool? Sabado { get; set; }
+        
         //horario de trabalho
+        [DataType(DataType.Time)]
         public DateTime HrInicio { get; set; }
+         
+        [DataType(DataType.Time)]
         public DateTime HrFim { get; set; }
         
     }

@@ -8,25 +8,25 @@ namespace Agenda_Consulta_Web.Controllers
 {
     public class EnderecosController : Controller
     {
-        // GET: Enderecos
+        // GET
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: Enderecos/Details/5
+        // GET
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Enderecos/Create
+        // GET
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Enderecos/Create
+        // POST
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -42,13 +42,13 @@ namespace Agenda_Consulta_Web.Controllers
             }
         }
 
-        // GET: Enderecos/Edit/5
+        // GET
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Enderecos/Edit/5
+        // POST
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {

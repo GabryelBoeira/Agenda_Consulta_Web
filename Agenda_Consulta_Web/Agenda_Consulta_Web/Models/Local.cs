@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Agenda_Consulta_Web.Models
 {
@@ -16,7 +17,12 @@ namespace Agenda_Consulta_Web.Models
         public bool? Sexta { get; set; }
         public bool? Sabado { get; set; }
 
+        [Required]
+        [DataType(DataType.Time)]
         public DateTime HrInicio { get; set; }
+
+        [Required]
+        [DataType(DataType.Time)]
         public DateTime HrFim { get; set; }
 
 

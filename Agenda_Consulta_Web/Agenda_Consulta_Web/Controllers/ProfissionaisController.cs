@@ -8,25 +8,25 @@ namespace Agenda_Consulta_Web.Controllers
 {
     public class ProfissionaisController : Controller
     {
-        // GET: Profissional
+        // GET
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: Profissional/Details/5
+        // GET
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Profissional/Create
+        // GET
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Profissional/Create
+        // POST
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -42,13 +42,13 @@ namespace Agenda_Consulta_Web.Controllers
             }
         }
 
-        // GET: Profissional/Edit/5
+        // GET
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Profissional/Edit/5
+        // POST
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -64,13 +64,13 @@ namespace Agenda_Consulta_Web.Controllers
             }
         }
 
-        // GET: Profissional/Delete/5
+        // GET
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Profissional/Delete/5
+        // POST
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

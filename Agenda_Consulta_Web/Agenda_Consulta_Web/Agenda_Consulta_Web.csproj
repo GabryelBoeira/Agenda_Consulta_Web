@@ -278,13 +278,13 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Pacientes\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Agendamento\" />
     <Folder Include="Views\Enderecos\" />
     <Folder Include="Views\Local\" />
-    <Folder Include="Views\Paciente\" />
     <Folder Include="Views\Profissional\" />
   </ItemGroup>
   <ItemGroup>

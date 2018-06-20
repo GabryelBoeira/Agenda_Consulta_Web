@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Agenda_Consulta_Web.Models;
+using Agenda_Consulta_Web.Models.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,25 +10,28 @@ namespace Agenda_Consulta_Web.Controllers
 {
     public class PacientesController : Controller
     {
-        // GET: Paciente
+        // GET
         public ActionResult Index()
         {
+            Contexto contexto = new Contexto();
+            List<Paciente> pacientes = contexto.Pacientes.ToList();
+
             return View();
         }
 
-        // GET: Paciente/Details/5
+        // GET
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Paciente/Create
+        // GET
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Paciente/Create
+        // POST
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -42,13 +47,13 @@ namespace Agenda_Consulta_Web.Controllers
             }
         }
 
-        // GET: Paciente/Edit/5
+        // GET
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Paciente/Edit/5
+        // POST
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -64,13 +69,13 @@ namespace Agenda_Consulta_Web.Controllers
             }
         }
 
-        // GET: Paciente/Delete/5
+        // GET
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Paciente/Delete/5
+        // POST
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
@@ -85,5 +90,7 @@ namespace Agenda_Consulta_Web.Controllers
                 return View();
             }
         }
+    
+
     }
 }

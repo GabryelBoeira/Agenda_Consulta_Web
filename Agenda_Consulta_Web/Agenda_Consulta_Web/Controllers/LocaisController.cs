@@ -8,25 +8,25 @@ namespace Agenda_Consulta_Web.Controllers
 {
     public class LocaisController : Controller
     {
-        // GET: Local
+        // GET
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: Local/Details/5
+        // GET
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Local/Create
+        // GET
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Local/Create
+        // POST
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -42,13 +42,13 @@ namespace Agenda_Consulta_Web.Controllers
             }
         }
 
-        // GET: Local/Edit/5
+        // GET
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Local/Edit/5
+        // POST
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -64,13 +64,13 @@ namespace Agenda_Consulta_Web.Controllers
             }
         }
 
-        // GET: Local/Delete/5
+        // GET
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Local/Delete/5
+        // POST
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

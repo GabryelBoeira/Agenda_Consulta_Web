@@ -282,10 +282,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Agendamento\" />
+    <Folder Include="Views\Agendamentos\" />
     <Folder Include="Views\Enderecos\" />
-    <Folder Include="Views\Local\" />
-    <Folder Include="Views\Profissional\" />
+    <Folder Include="Views\Locais\" />
+    <Folder Include="Views\Profissionais\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

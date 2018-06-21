@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Agenda_Consulta_Web.Models;
+using Agenda_Consulta_Web.Models.DAL;
 
 namespace Agenda_Consulta_Web.Controllers
 {
@@ -11,6 +13,8 @@ namespace Agenda_Consulta_Web.Controllers
         // GET
         public ActionResult Index()
         {
+            Contexto contexto = new Contexto();
+            List<Paciente> paciente = new Contexto.ToList();
             return View();
         }
 
@@ -24,22 +28,25 @@ namespace Agenda_Consulta_Web.Controllers
         public ActionResult Create()
         {
             return View();
+
         }
 
         // POST
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Profissional profissional)
         {
-            try
+             //salvar novo profissional cadastrado
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
-
+                //erro aqui
+                Contexto contexto = new Contexto();
+                contexto.Profissionais.Add(profissional);
+                contexto.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(profissional);                
+      
         }
 
         // GET
@@ -85,5 +92,7 @@ namespace Agenda_Consulta_Web.Controllers
                 return View();
             }
         }
+
+     
     }
 }

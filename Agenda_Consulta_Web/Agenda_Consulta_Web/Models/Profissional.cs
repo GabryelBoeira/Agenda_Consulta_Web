@@ -20,11 +20,13 @@ namespace Agenda_Consulta_Web.Models
         public bool? Quinta { get; set; }
         public bool? Sexta { get; set; }
         public bool? Sabado { get; set; }
-        
+
         //horario de trabalho
+        [Display(Name = "Horario inicial")]
         [DataType(DataType.Time)]
         public DateTime HrInicio { get; set; }
-         
+
+        [Display(Name = "Horario final")]
         [DataType(DataType.Time)]
         public DateTime HrFim { get; set; }
         

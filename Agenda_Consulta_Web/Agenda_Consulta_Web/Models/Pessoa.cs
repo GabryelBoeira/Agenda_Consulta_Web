@@ -8,6 +8,8 @@ namespace Agenda_Consulta_Web.Models
     {
         public int ID { get; set; }
         public string Nome { get; set; }
+
+        [Display(Name = "Contato")]
         public string Celular { get; set; }
 
         [Required]
@@ -17,6 +19,7 @@ namespace Agenda_Consulta_Web.Models
 
         [Required]
         [DataType(DataType.Date)]
+        [Display(Name = "Data de Nascimento")]
         public DateTime DtNascimento { get; set; } 
 
  

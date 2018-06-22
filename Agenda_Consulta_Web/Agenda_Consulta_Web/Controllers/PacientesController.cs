@@ -91,9 +91,24 @@ namespace Agenda_Consulta_Web.Controllers
         }
 
         // GET
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            //busca para confirmar antes de excluir
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Contexto contexto = new Contexto();
+
+            Paciente paciente = contexto.Pacientes.Find(id);
+
+            if (paciente == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(paciente);
         }
 
         // POST
@@ -102,7 +117,12 @@ namespace Agenda_Consulta_Web.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
+                //exclui os dados
+                Contexto contexto = new Contexto();
+                Paciente paciente = contexto.Pacientes.Find(id);
+
+                contexto.Pacientes.Remove(paciente);
+                contexto.SaveChanges();
 
                 return RedirectToAction("Index");
             }

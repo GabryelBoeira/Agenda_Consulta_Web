@@ -88,7 +88,7 @@ namespace Agenda_Consulta_Web.Controllers
         }
 
         // GET
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -97,15 +97,14 @@ namespace Agenda_Consulta_Web.Controllers
 
             Contexto contexto = new Contexto();
 
-            Usuario usu = contexto.Usuarios.Find(id);
+            Profissional profissional = contexto.Profissionais.Find(id);
 
-            if (usu == null)
+            if (profissional == null)
             {
                 return HttpNotFound();
             }
 
-            return View(usu);
-            return View();
+            return View(profissional);
         }
 
         // POST
@@ -115,7 +114,11 @@ namespace Agenda_Consulta_Web.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
+                Contexto contexto = new Contexto();
+                Profissional profissional = contexto.Profissionais.Find(id);
+
+                contexto.Profissionais.Remove(profissional);
+                contexto.SaveChanges();
 
                 return RedirectToAction("Index");
             }

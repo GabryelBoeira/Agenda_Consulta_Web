@@ -16,7 +16,7 @@ namespace Agenda_Consulta_Web.Controllers
             Contexto contexto = new Contexto();
             List<Paciente> pacientes = contexto.Pacientes.ToList();
 
-            return View();
+            return View(pacientes);
         }
 
         // GET

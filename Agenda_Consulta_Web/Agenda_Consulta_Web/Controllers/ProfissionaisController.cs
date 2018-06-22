@@ -14,8 +14,8 @@ namespace Agenda_Consulta_Web.Controllers
         public ActionResult Index()
         {
             Contexto contexto = new Contexto();
-            List<Paciente> paciente = new Contexto.ToList();
-            return View();
+            List<Profissional> profissionais =  contexto.Profissionais.ToList();
+            return View(profissionais);
         }
 
         // GET
@@ -38,7 +38,6 @@ namespace Agenda_Consulta_Web.Controllers
              //salvar novo profissional cadastrado
             if (ModelState.IsValid)
             {
-                //erro aqui
                 Contexto contexto = new Contexto();
                 contexto.Profissionais.Add(profissional);
                 contexto.SaveChanges();

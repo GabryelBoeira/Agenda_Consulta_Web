@@ -25,7 +25,7 @@ namespace Agenda_Consulta_Web.Models.DAL
         public DbSet<Profissional> Profissionais { get; set; }
         public DbSet<Agendamento> Agendamentos { get; set; }
 
-        internal class ToList : List<Paciente>
+        internal class ToList : List<Profissional>
         {
         }
     }

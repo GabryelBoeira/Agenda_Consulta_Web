@@ -1,5 +1,11 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Web.UI.WebControls;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using Agenda_Consulta_Web.Validacao;
+
 
 namespace Agenda_Consulta_Web.Models
 {
@@ -7,15 +13,20 @@ namespace Agenda_Consulta_Web.Models
     public abstract class Pessoa
     {
         public int ID { get; set; }
+        [Required]
         public string Nome { get; set; }
-
+       
         [Display(Name = "Contato")]
         public string Celular { get; set; }
 
         [Required]
+        [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
-        public string Cpf { get; set; }
+                
+        [Required(ErrorMessage = "CPF obrigatório")]
+        [CustomValidationCPF(ErrorMessage = "CPF inválido")]
+        public string CPF { get; set; }
 
         [Required]
         [DataType(DataType.Date)]

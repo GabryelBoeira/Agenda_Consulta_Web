@@ -15,7 +15,7 @@ namespace Agenda_Consulta_Web.Models
 
         [ForeignKey("_Paciente")]
         public int PacienteID { get; set; }
-        public virtual Paciente _Paciente { get; set; }
+        public virtual Profissional _Paciente { get; set; }
 
         [ForeignKey("_Profissional")]
         public int ProfissionalID { get; set; }

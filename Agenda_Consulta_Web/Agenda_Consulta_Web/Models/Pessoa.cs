@@ -25,7 +25,6 @@ namespace Agenda_Consulta_Web.Models
         public string Email { get; set; }
                 
         [Required(ErrorMessage = "CPF obrigatório")]
-        [CustomValidationCPF(ErrorMessage = "CPF inválido")]
         public string CPF { get; set; }
 
         [Required]

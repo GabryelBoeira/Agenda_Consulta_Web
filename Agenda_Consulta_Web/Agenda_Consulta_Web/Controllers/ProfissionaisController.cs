@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Agenda_Consulta_Web.Models;
@@ -19,9 +20,23 @@ namespace Agenda_Consulta_Web.Controllers
         }
 
         // GET
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            return View();
+
+            //verifiaca se o id estiver nulo 
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            }
+            Contexto contexto = new Contexto();
+
+            Profissional profissional = contexto.Profissionais.Find(id);
+            if (profissional == null)
+            {
+                return HttpNotFound();
+            }
+            return View(profissional);
         }
 
         // GET
@@ -33,6 +48,7 @@ namespace Agenda_Consulta_Web.Controllers
 
         // POST
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Profissional profissional)
         {
              //salvar novo profissional cadastrado
@@ -56,6 +72,7 @@ namespace Agenda_Consulta_Web.Controllers
 
         // POST
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, FormCollection collection)
         {
             try
@@ -73,11 +90,27 @@ namespace Agenda_Consulta_Web.Controllers
         // GET
         public ActionResult Delete(int id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Contexto contexto = new Contexto();
+
+            Usuario usu = contexto.Usuarios.Find(id);
+
+            if (usu == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(usu);
             return View();
         }
 
         // POST
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try

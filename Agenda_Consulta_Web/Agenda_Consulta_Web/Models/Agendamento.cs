@@ -21,6 +21,10 @@ namespace Agenda_Consulta_Web.Models
         public int ProfissionalID { get; set; }
         public virtual Profissional _Profissional { get; set; }
 
+
+        [Required]
+        [DataType(DataType.DateTime)]
+        [Display(Name = "Data e hora da consulta")]
         public DateTime DataHoraConsulta { get; set; }
 
         //tempo de cada consulta realizada

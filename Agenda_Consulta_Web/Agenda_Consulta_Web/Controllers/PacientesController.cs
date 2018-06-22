@@ -3,6 +3,7 @@ using Agenda_Consulta_Web.Models.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -20,9 +21,22 @@ namespace Agenda_Consulta_Web.Controllers
         }
 
         // GET
-        public ActionResult Details(int id)
-        {
-            return View();
+        public ActionResult Details(int? id)        {
+
+            //verifiaca se o id estiver nulo 
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            }
+            Contexto contexto = new Contexto();
+
+            Paciente paciente = contexto.Pacientes.Find(id);
+            if (paciente == null)
+            {
+                return HttpNotFound();
+            }
+            return View(paciente);
         }
 
         // GET
@@ -33,13 +47,20 @@ namespace Agenda_Consulta_Web.Controllers
 
         // POST
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Paciente paciente)
         {
             try
             {
-                // TODO: Add insert logic here
+                if (ModelState.IsValid)
+                {
+                    Contexto contexto = new Contexto();
+                    contexto.Pacientes.Add(paciente);
+                    contexto.SaveChanges();
+                    return RedirectToAction("Index");
+                }
 
-                return RedirectToAction("Index");
+                return View(paciente);
+
             }
             catch
             {

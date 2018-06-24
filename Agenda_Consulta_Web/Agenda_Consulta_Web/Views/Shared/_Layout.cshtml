@@ -25,7 +25,7 @@
                     <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
                     <li>@Html.ActionLink("Sobre", "About", "Home")</li>
                     <li>@Html.ActionLink("Contato", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Cadastro de profissionais", "Create", "Profissionais")</li> 
+                    <li>@Html.ActionLink("Cadastro de profissionais", "Create", "Profissionais")</li>
                     <li>@Html.ActionLink("Contato", "Delete", "Profissionais")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
@@ -42,7 +42,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/inputmask")
     @RenderSection("scripts", required: false)
-    <script src="~/lib/jquery-mask-plugin/src/jquery.mask.js" type="text/javascript" asp-append-version="true"></script>
 </body>
 </html>

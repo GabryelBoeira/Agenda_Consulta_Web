@@ -48,7 +48,7 @@ namespace Agenda_Consulta_Web.Controllers
 
         // POST
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult Create(Profissional profissional)
         {
              //salvar novo profissional cadastrado
@@ -63,27 +63,49 @@ namespace Agenda_Consulta_Web.Controllers
             return View(profissional);                
       
         }
-
+        
         // GET
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Contexto contexto = new Contexto();
+            Profissional profissional = contexto.Profissionais.Find(id);
+
+            if (profissional == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(profissional);
         }
 
         // POST
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, FormCollection collection)
+        //[ValidateAntiForgeryToken]
+        public ActionResult Edit(int? id, Profissional profissional)
         {
             try
             {
-                // TODO: Add update logic here
+                if (ModelState.IsValid)
+                {
+                    Contexto contexto = new Contexto();
 
-                return RedirectToAction("Index");
+                    contexto.Entry(profissional).State = 
+                        System.Data.Entity.EntityState.Modified;
+                    contexto.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+
+                return View(profissional);
+
             }
             catch
             {
-                return View();
+                return View(profissional);
             }
         }
 
@@ -108,9 +130,9 @@ namespace Agenda_Consulta_Web.Controllers
         }
 
         // POST
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        public ActionResult Delete(int id)
         {
             try
             {

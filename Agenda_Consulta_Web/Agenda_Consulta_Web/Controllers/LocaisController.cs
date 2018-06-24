@@ -51,7 +51,6 @@ namespace Agenda_Consulta_Web.Controllers
         {
             try
             {
-                //salvar novo profissional cadastrado
                 if (ModelState.IsValid)
                 {
                     Contexto contexto = new Contexto();

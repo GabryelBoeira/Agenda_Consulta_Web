@@ -10,7 +10,7 @@ using Agenda_Consulta_Web.Validacao;
 namespace Agenda_Consulta_Web.Models
 {
     //cria a classe que corresponde as caracteristicas que seram usados como base 
-    public abstract class Pessoa
+    public abstract class Pessoa 
     {
         public int ID { get; set; }
         [Required]

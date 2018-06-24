@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Agenda_Consulta_Web.Models;
+using Agenda_Consulta_Web.Models.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +13,10 @@ namespace Agenda_Consulta_Web.Controllers
         // GET
         public ActionResult Index()
         {
-            return View();
+            Contexto contexto = new Contexto();
+            List<Local> locais = contexto.Locais.ToList();
+
+            return View(locais);
         }
 
         // GET

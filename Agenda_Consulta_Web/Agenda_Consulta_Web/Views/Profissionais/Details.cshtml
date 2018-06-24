@@ -1,0 +1,146 @@
+﻿@model Agenda_Consulta_Web.Models.Profissional
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Profissional</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Celular)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Celular)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CPF)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPF)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DtNascimento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DtNascimento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResgistroProfissional)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResgistroProfissional)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Especialidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Especialidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Domingo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Domingo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Segunda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Segunda)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Terca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Terca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quarta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quarta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quinta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quinta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sexta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sexta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sabado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sabado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HrInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HrInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HrFim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HrFim)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

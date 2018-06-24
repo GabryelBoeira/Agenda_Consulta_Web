@@ -69,24 +69,46 @@ namespace Agenda_Consulta_Web.Controllers
         }
 
         // GET
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Contexto contexto = new Contexto();
+            Paciente paciente = contexto.Pacientes.Find(id);
+
+            if (paciente == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(paciente);
         }
 
         // POST
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int? id, Paciente paciente)
         {
             try
             {
-                // TODO: Add update logic here
+                if (ModelState.IsValid)
+                {
+                    Contexto contexto = new Contexto();
 
-                return RedirectToAction("Index");
+                    contexto.Entry(paciente).State =
+                        System.Data.Entity.EntityState.Modified;
+                    contexto.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+
+                return View(paciente);
+
             }
             catch
             {
-                return View();
+                return View(paciente);
             }
         }
 

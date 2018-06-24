@@ -51,17 +51,38 @@ namespace Agenda_Consulta_Web.Controllers
         //[ValidateAntiForgeryToken]
         public ActionResult Create(Profissional profissional)
         {
-             //salvar novo profissional cadastrado
-            if (ModelState.IsValid)
+
+            var msgAlerta = string.Empty;
+            var tipoAlerta = string.Empty;
+
+            try
             {
+                if (!ModelState.IsValid)
+                    throw new Exception();
+
                 Contexto contexto = new Contexto();
                 contexto.Profissionais.Add(profissional);
                 contexto.SaveChanges();
-                return RedirectToAction("Index");
+
+                ModelState.Clear();
+
+                msgAlerta = "PlayList cadastrada com sucesso";
+                tipoAlerta = "alert-success";
+
+            }
+            catch (Exception e)
+            {
+                msgAlerta = "Ocorreu um erro ao cadastrar a PlayList" + e;
+                tipoAlerta = "alert-danger";
             }
 
-            return View(profissional);                
-      
+            TempData.Add("MsgAlerta", msgAlerta);
+            TempData.Add("TipoAlerta", tipoAlerta);
+
+            return View();
+
+
+
         }
         
         // GET
@@ -85,7 +106,7 @@ namespace Agenda_Consulta_Web.Controllers
 
         // POST
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(int? id, Profissional profissional)
         {
             try

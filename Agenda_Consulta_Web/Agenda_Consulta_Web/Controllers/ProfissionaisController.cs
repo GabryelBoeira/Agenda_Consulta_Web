@@ -48,7 +48,7 @@ namespace Agenda_Consulta_Web.Controllers
 
         // POST
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        
         public ActionResult Create(Profissional profissional)
         {
             try
@@ -91,7 +91,6 @@ namespace Agenda_Consulta_Web.Controllers
 
         // POST
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit(int? id, Profissional profissional)
         {
             try
@@ -137,7 +136,6 @@ namespace Agenda_Consulta_Web.Controllers
 
         // POST
         [HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
             try

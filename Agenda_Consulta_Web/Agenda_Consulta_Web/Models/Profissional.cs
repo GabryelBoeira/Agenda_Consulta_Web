@@ -15,37 +15,23 @@ namespace Agenda_Consulta_Web.Models
         public string Especialidade { get; set; }
 
         //Dias da semana
-        [BindableAttribute(true, BindingDirection.TwoWay)]
-        [ThemeableAttribute(false)]
         public virtual bool Domingo { get; set; }
 
         [Display(Name = "Segunda-Feira")]
-        [BindableAttribute(true, BindingDirection.TwoWay)]
-        [ThemeableAttribute(false)]
         public virtual bool Segunda { get; set; }
 
         [Display(Name = "Terca-Feira")]
-        [BindableAttribute(true, BindingDirection.TwoWay)]
-        [ThemeableAttribute(false)]
         public virtual bool Terca { get; set; }
 
         [Display(Name = "Quarta-Feira")]
-        [BindableAttribute(true, BindingDirection.TwoWay)]
-        [ThemeableAttribute(false)]
         public virtual bool Quarta { get; set; }
 
         [Display(Name = "Quinta-Feira")]
-        [BindableAttribute(true, BindingDirection.TwoWay)]
-        [ThemeableAttribute(false)]
         public virtual bool Quinta { get; set; }
 
         [Display(Name = "Sexta-Feira")]
-        [BindableAttribute(true, BindingDirection.TwoWay)]
-        [ThemeableAttribute(false)]
         public virtual bool Sexta { get; set; }
 
-        [BindableAttribute(true, BindingDirection.TwoWay)]
-        [ThemeableAttribute(false)]
         public virtual bool Sabado { get; set; }
 
         //horario de trabalho

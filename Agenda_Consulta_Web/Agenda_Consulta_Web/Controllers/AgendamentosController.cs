@@ -43,6 +43,8 @@ namespace Agenda_Consulta_Web.Controllers
                         {
                             if (ValidaHorarioLivreLocal(agendamento))
                             {
+                                Contexto contexto = new Contexto();
+                                contexto.Agendamentos.Add(agendamento);
                                 return RedirectToAction("Index");
                             }
                         }
@@ -52,7 +54,7 @@ namespace Agenda_Consulta_Web.Controllers
             }
             catch
             {
-                return View(agendamento);
+                return View();
             }
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Agenda_Consulta_Web.Models
@@ -9,7 +10,7 @@ namespace Agenda_Consulta_Web.Models
         //virtual serve para facilitar a visualização do objeto que retorna do banco de dados
         public int AgendamentoID { get; set; }
 
-
+        
         public int LocalID { get; set; }
         public virtual Local _Local { get; set; }
 
@@ -33,5 +34,6 @@ namespace Agenda_Consulta_Web.Models
                 return 30;
             }
         }
+       
     }
 }

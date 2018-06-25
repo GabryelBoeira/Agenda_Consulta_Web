@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<Agenda_Consulta_Web.Models.Profissional>
+
 @{
     ViewBag.Title = "Index";
 }
@@ -8,91 +9,89 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Celular)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Especialidade)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Domingo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Segunda)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Terca)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Quarta)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Quinta)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Sexta)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Sabado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HrInicio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HrFim)
-        </th>
-        <th></th>
-    </tr>
+<div class="table-responsive">
+    <table class="table table-striped table-condensed table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Especialidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Domingo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Segunda)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Terca)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quarta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quinta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sexta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sabado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HrInicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HrFim)
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Celular)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Especialidade)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Domingo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Segunda)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Terca)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Quarta)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Quinta)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sexta)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sabado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HrInicio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HrFim)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Detales", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Excluir", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>               
+                <td>
+                    @Html.DisplayFor(modelItem => item.Especialidade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Domingo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Segunda)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Terca)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quarta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quinta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sexta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sabado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HrInicio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HrFim)
+                </td>
 
-</table>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.ID })
+                    @Html.ActionLink("Detales", "Details", new { id = item.ID })
+                    @Html.ActionLink("Excluir", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

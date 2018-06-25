@@ -1,20 +1,22 @@
-﻿@model Agenda_Consulta_Web.Models.Pessoa
+﻿@model Agenda_Consulta_Web.Models.Paciente
 
 @{
-    ViewBag.Title = "Adicionar Paciente";
+    ViewBag.Title = "Edit";
 }
 
-<h2> ViewBag.Title</h2>
+<h2>Edit</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Pessoa</h4>
+        <h4>Paciente</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID)
+
         <div class="form-group">
             @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -26,7 +28,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Celular, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Celular, new { htmlAttributes = new { @class = "form-control", @maxlength = "18" } })
+                @Html.EditorFor(model => model.Celular, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Celular, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -48,7 +50,7 @@
         </div>
 
         <div class="form-group">
-            @Html.Label("Data de Nascimento", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DtNascimento, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.DtNascimento, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.DtNascimento, "", new { @class = "text-danger" })
@@ -57,7 +59,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Adicionar" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>

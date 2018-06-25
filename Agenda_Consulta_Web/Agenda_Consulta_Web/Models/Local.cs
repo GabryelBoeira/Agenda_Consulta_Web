@@ -10,13 +10,13 @@ namespace Agenda_Consulta_Web.Models
         [Display(Name = "Nome da sala")]
         public string NomeLocal { get; set; }
         //Dias da semana
-        public bool? Domingo { get; set; }
-        public bool? Segunda { get; set; }
-        public bool? Terca { get; set; }
-        public bool? Quarta { get; set; }
-        public bool? Quinta { get; set; }
-        public bool? Sexta { get; set; }
-        public bool? Sabado { get; set; }
+        public virtual bool Domingo { get; set; }
+        public virtual bool Segunda { get; set; }
+        public virtual  bool Terca { get; set; }
+        public virtual bool Quarta { get; set; }
+        public virtual bool Quinta { get; set; }
+        public virtual bool Sexta { get; set; }
+        public virtual  bool Sabado { get; set; }
 
         //horario de trabalho
         [Display(Name = "Horario inicial")]

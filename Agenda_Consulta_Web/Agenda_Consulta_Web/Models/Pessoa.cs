@@ -4,8 +4,6 @@ using System.Web.UI.WebControls;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Agenda_Consulta_Web.Validacao;
-
 
 namespace Agenda_Consulta_Web.Models
 {
@@ -23,7 +21,8 @@ namespace Agenda_Consulta_Web.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
-                
+
+        [StringLength(11, ErrorMessage = "Deve conter 11 Digitos")]
         [Required(ErrorMessage = "CPF obrigatório")]
         public string CPF { get; set; }
 
@@ -31,7 +30,6 @@ namespace Agenda_Consulta_Web.Models
         [DataType(DataType.Date)]
         [Display(Name = "Data de Nascimento")]
         public DateTime DtNascimento { get; set; } 
-
  
     }
 }

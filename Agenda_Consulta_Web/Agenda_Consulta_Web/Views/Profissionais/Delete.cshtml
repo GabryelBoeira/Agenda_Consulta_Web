@@ -1,7 +1,7 @@
 ﻿@model Agenda_Consulta_Web.Models.Profissional
 
 @{
-    ViewBag.Title = "Excluir";
+    ViewBag.Title = "Delete";
 }
 
 <h2>Delete</h2>
@@ -144,9 +144,9 @@
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
+    <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        @Html.ActionLink("Retornar para a lista", "Index")
+    </div>
     }
 </div>

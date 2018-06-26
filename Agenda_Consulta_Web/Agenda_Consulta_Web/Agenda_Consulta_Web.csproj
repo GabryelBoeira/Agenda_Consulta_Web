@@ -196,7 +196,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AgendamentosController.cs" />
+    <Compile Include="Controllers\AgendamentoesController.cs" />
     <Compile Include="Controllers\EnderecosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocaisController.cs" />
@@ -288,7 +288,11 @@
     <Content Include="Views\Pacientes\Delete.cshtml" />
     <Content Include="Views\Pacientes\Edit.cshtml" />
     <Content Include="Views\Locais\Create.cshtml" />
-    <Content Include="Views\Agendamentos\Create.cshtml" />
+    <Content Include="Views\Agendamentoes\Create.cshtml" />
+    <Content Include="Views\Agendamentoes\Delete.cshtml" />
+    <Content Include="Views\Agendamentoes\Details.cshtml" />
+    <Content Include="Views\Agendamentoes\Edit.cshtml" />
+    <Content Include="Views\Agendamentoes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

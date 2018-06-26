@@ -14,20 +14,22 @@ namespace Agenda_Consulta_Web.Models
         [Required]
         public string Nome { get; set; }
        
+        [Phone]
         [Display(Name = "Contato")]
         public string Celular { get; set; }
 
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
         [StringLength(11, ErrorMessage = "Deve conter 11 Digitos")]
         [Required(ErrorMessage = "CPF obrigatório")]
         public string CPF { get; set; }
 
-        [Required]
-        [DataType(DataType.Date)]
+        [Required]        
+        [DataType(DataType.PhoneNumber)]
         [Display(Name = "Data de Nascimento")]
         public DateTime DtNascimento { get; set; } 
  

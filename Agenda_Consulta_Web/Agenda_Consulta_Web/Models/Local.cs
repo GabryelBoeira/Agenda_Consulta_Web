@@ -28,7 +28,6 @@ namespace Agenda_Consulta_Web.Models
         public DateTime HrFim { get; set; }
 
 
-
         public int EnderecoID { get; set; }
         public virtual Endereco _Endereco { get; set; }
     }

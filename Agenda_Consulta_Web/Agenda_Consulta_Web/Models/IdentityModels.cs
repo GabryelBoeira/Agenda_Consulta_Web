@@ -29,5 +29,9 @@ namespace Agenda_Consulta_Web.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<Agenda_Consulta_Web.Models.Agendamento> Agendamentoes { get; set; }
+
+        public System.Data.Entity.DbSet<Agenda_Consulta_Web.Models.Local> Locals { get; set; }
     }
 }

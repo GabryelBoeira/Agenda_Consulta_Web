@@ -16,7 +16,7 @@ namespace Agenda_Consulta_Web.Models
 
         [Display(Name = "Nome do paciente")]
         public int PacienteID { get; set; }
-        public virtual Profissional _Paciente { get; set; }
+        public virtual Paciente _Paciente { get; set; }
 
         [Display(Name = "Nome do Profissional")]
         public int ProfissionalID { get; set; }
@@ -27,9 +27,8 @@ namespace Agenda_Consulta_Web.Models
         [DataType(DataType.Date)]
         public DateTime DataConsulta { get; set; }
 
-
         [Required]
-        [Display(Name = "Data consulta")]
+        [Display(Name = "Hora consulta")]
         [DataType(DataType.Time)]
         public DateTime HoraConsulta { get; set; }
 

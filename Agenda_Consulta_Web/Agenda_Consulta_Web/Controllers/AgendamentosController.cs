@@ -11,18 +11,18 @@ using Agenda_Consulta_Web.Models.DAL;
 
 namespace Agenda_Consulta_Web.Controllers
 {
-    public class AgendamentoesController : Controller
+    public class AgendamentosController : Controller
     {
         private Contexto db = new Contexto();
 
-        // GET:
+        // GET: Agendamentos
         public ActionResult Index()
         {
-            var agendamentos = db.Agendamentos.Include(a => a._Local);
+            var agendamentos = db.Agendamentos.Include(a => a._Local).Include(a => a._Paciente).Include(a => a._Profissional);
             return View(agendamentos.ToList());
         }
 
-        // GET: 
+        // GET: Agendamentos/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,17 +37,19 @@ namespace Agenda_Consulta_Web.Controllers
             return View(agendamento);
         }
 
-        // GET: Agendamentoes/Create
+        // GET: Agendamentos/Create
         public ActionResult Create()
         {
             ViewBag.LocalID = new SelectList(db.Locais, "LocalID", "NomeLocal");
+            ViewBag.PacienteID = new SelectList(db.Pacientes, "ID", "Nome");
+            ViewBag.ProfissionalID = new SelectList(db.Profissionais, "ID", "ResgistroProfissional");
             return View();
         }
 
-       
+        // POST
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AgendamentoID,LocalID,PacienteID,ProfissionalID,DataHoraConsulta")] Agendamento agendamento)
+        public ActionResult Create([Bind(Include = "AgendamentoID,LocalID,PacienteID,ProfissionalID,DataConsulta,HoraConsulta")] Agendamento agendamento)
         {
             if (ModelState.IsValid)
             {
@@ -59,20 +61,23 @@ namespace Agenda_Consulta_Web.Controllers
                         {
                             if (ValidaHorarioLivreLocal(agendamento))
                             {
-                                Contexto contexto = new Contexto();
-                                contexto.Agendamentos.Add(agendamento);
+                                db.Agendamentos.Add(agendamento);
+                                db.SaveChanges();
                                 return RedirectToAction("Index");
                             }
                         }
                     }
                 }
+               
             }
 
             ViewBag.LocalID = new SelectList(db.Locais, "LocalID", "NomeLocal", agendamento.LocalID);
+            ViewBag.PacienteID = new SelectList(db.Pacientes, "ID", "Nome", agendamento.PacienteID);
+            ViewBag.ProfissionalID = new SelectList(db.Profissionais, "ID", "ResgistroProfissional", agendamento.ProfissionalID);
             return View(agendamento);
         }
 
-        // GET: Agendamentoes/Edit/5
+        // GET: Agendamentos/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -85,25 +90,44 @@ namespace Agenda_Consulta_Web.Controllers
                 return HttpNotFound();
             }
             ViewBag.LocalID = new SelectList(db.Locais, "LocalID", "NomeLocal", agendamento.LocalID);
+            ViewBag.PacienteID = new SelectList(db.Pacientes, "ID", "Nome", agendamento.PacienteID);
+            ViewBag.ProfissionalID = new SelectList(db.Profissionais, "ID", "ResgistroProfissional", agendamento.ProfissionalID);
             return View(agendamento);
         }
 
-      
+        // POST: Agendamentos/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AgendamentoID,LocalID,PacienteID,ProfissionalID,DataHoraConsulta")] Agendamento agendamento)
+        public ActionResult Edit([Bind(Include = "AgendamentoID,LocalID,PacienteID,ProfissionalID,DataConsulta,HoraConsulta")] Agendamento agendamento)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(agendamento).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ValidaHoraAtendimento(agendamento))
+                {
+                    if (ValidaDiaDaSemanaAtendimento(agendamento))
+                    {
+                        if (ValidaHorarioLivreProfissional(agendamento))
+                        {
+                            if (ValidaHorarioLivreLocal(agendamento))
+                            {
+                                db.Entry(agendamento).State = EntityState.Modified;
+                                db.SaveChanges();
+                                return RedirectToAction("Index");
+                            }
+                        }
+                    }
+                }
+               
             }
             ViewBag.LocalID = new SelectList(db.Locais, "LocalID", "NomeLocal", agendamento.LocalID);
+            ViewBag.PacienteID = new SelectList(db.Pacientes, "ID", "Nome", agendamento.PacienteID);
+            ViewBag.ProfissionalID = new SelectList(db.Profissionais, "ID", "ResgistroProfissional", agendamento.ProfissionalID);
             return View(agendamento);
         }
 
-        // GET: Agendamentoes/Delete/5
+        // GET: Agendamentos/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -118,7 +142,7 @@ namespace Agenda_Consulta_Web.Controllers
             return View(agendamento);
         }
 
-        // POST: Agendamentoes/Delete/5
+        // POST: Agendamentos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -224,8 +248,6 @@ namespace Agenda_Consulta_Web.Controllers
 
             DateTime inicioConsulta = agendamento.HoraConsulta.AddMinutes(-agendamento.TempoEmMinutosConsulta);
             DateTime terminoConsulta = agendamento.HoraConsulta.AddMinutes(agendamento.TempoEmMinutosConsulta);
-            DateTime Dataconsulta = agendamento.DataConsulta;
-
 
             var a = (from x in contexto.Agendamentos
                      where x.ProfissionalID.Equals(agendamento.ProfissionalID) &&
@@ -258,4 +280,4 @@ namespace Agenda_Consulta_Web.Controllers
 
     }
 }
-
+}

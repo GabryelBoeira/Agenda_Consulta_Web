@@ -15,13 +15,16 @@
             @Html.DisplayNameFor(model => model._Local.NomeLocal)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PacienteID)
+            @Html.DisplayNameFor(model => model._Paciente.Nome)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ProfissionalID)
+            @Html.DisplayNameFor(model => model._Profissional.ResgistroProfissional)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DataHoraConsulta)
+            @Html.DisplayNameFor(model => model.DataConsulta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HoraConsulta)
         </th>
         <th></th>
     </tr>
@@ -32,13 +35,16 @@
             @Html.DisplayFor(modelItem => item._Local.NomeLocal)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PacienteID)
+            @Html.DisplayFor(modelItem => item._Paciente.Nome)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ProfissionalID)
+            @Html.DisplayFor(modelItem => item._Profissional.ResgistroProfissional)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DataHoraConsulta)
+            @Html.DisplayFor(modelItem => item.DataConsulta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HoraConsulta)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.AgendamentoID }) |

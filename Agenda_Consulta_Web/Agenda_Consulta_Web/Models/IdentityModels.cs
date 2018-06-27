@@ -33,5 +33,7 @@ namespace Agenda_Consulta_Web.Models
         public System.Data.Entity.DbSet<Agenda_Consulta_Web.Models.Agendamento> Agendamentoes { get; set; }
 
         public System.Data.Entity.DbSet<Agenda_Consulta_Web.Models.Local> Locals { get; set; }
+
+        public System.Data.Entity.DbSet<Agenda_Consulta_Web.Models.Endereco> Enderecoes { get; set; }
     }
 }

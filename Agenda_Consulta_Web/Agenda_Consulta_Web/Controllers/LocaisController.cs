@@ -1,37 +1,34 @@
-﻿using Agenda_Consulta_Web.Models;
-using Agenda_Consulta_Web.Models.DAL;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Agenda_Consulta_Web.Models;
 
 namespace Agenda_Consulta_Web.Controllers
 {
-    public class LocaisController : Controller
+    public class LocalsController : Controller
     {
-        // GET
+        private ApplicationDbContext db = new ApplicationDbContext();
+
+        // GET: Locals
         public ActionResult Index()
         {
-            Contexto contexto = new Contexto();
-            List<Local> locais = contexto.Locais.ToList();
-
-            return View(locais);
+            var locals = db.Locals.Include(l => l._Endereco);
+            return View(locals.ToList());
         }
 
-        // GET
+        // GET: Locals/Details/5
         public ActionResult Details(int? id)
         {
-            //verifiaca se o id estiver nulo 
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
             }
-            Contexto contexto = new Contexto();
-
-            Local local = contexto.Locais.Find(id);
+            Local local = db.Locals.Find(id);
             if (local == null)
             {
                 return HttpNotFound();
@@ -39,118 +36,118 @@ namespace Agenda_Consulta_Web.Controllers
             return View(local);
         }
 
-        // GET
+        // GET: Locals/Create
         public ActionResult Create()
         {
+            ViewBag.EnderecoID = new SelectList(db.Enderecoes, "EnderecoID", "Cep");
             return View();
         }
 
         // POST
-        [HttpPost]
-        public ActionResult Create(Local local)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(LocaisViewModel  model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    Contexto contexto = new Contexto();
-                    contexto.Locais.Add(local);
-                    contexto.SaveChanges();
-                    return RedirectToAction("Index");
-                }
+                Local local = new Local();
+                Endereco endereco = new Endereco();
 
-                return View(local);
+
+                //var Local = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                // var endereço = await UserManager.CreateAsync(user, model.Password);
+                // if (result.Succeeded)
+                // {
+                //await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                // Send an email with this link
+                // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                // return RedirectToAction("Index", "Home");
+                //}
+                //   AddErrors(result);
+
+
+                // If we got this far, something failed, redisplay form
+                //  return View(model);
+                //}
+                db.Locals.Add(local);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            ViewBag.EnderecoID = new SelectList(db.Enderecoes, "EnderecoID", "Cep", local.EnderecoID);
+            return View(local);
         }
 
-        // GET
+        // GET: Locals/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            Contexto contexto = new Contexto();
-            Local local = contexto.Locais.Find(id);
-
+            Local local = db.Locals.Find(id);
             if (local == null)
             {
                 return HttpNotFound();
             }
-
+            ViewBag.EnderecoID = new SelectList(db.Enderecoes, "EnderecoID", "Cep", local.EnderecoID);
             return View(local);
         }
 
-        // POST
+        // POST: Locals/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Edit(int id, Local local)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "LocalID,NomeLocal,Domingo,Segunda,Terca,Quarta,Quinta,Sexta,Sabado,HrInicio,HrFim,EnderecoID")] Local local)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    Contexto contexto = new Contexto();
-
-                    contexto.Entry(local).State =
-                        System.Data.Entity.EntityState.Modified;
-                    contexto.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-
-                return View(local);
-
+                db.Entry(local).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            catch
-            {
-                return View(local);
-            }
+            ViewBag.EnderecoID = new SelectList(db.Enderecoes, "EnderecoID", "Cep", local.EnderecoID);
+            return View(local);
         }
 
-        // GET
+        // GET: Locals/Delete/5
         public ActionResult Delete(int? id)
         {
-            //busca para confirmar antes de excluir
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            Contexto contexto = new Contexto();
-            
-            Local local = contexto.Locais.Find(id);
-
+            Local local = db.Locals.Find(id);
             if (local == null)
             {
                 return HttpNotFound();
             }
-
             return View(local);
         }
 
-        // POST
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        // POST: Locals/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
         {
-            try
-            {
-                //exclui os dados
-                Contexto contexto = new Contexto();
-                Local local = contexto.Locais.Find(id);
+            Local local = db.Locals.Find(id);
+            db.Locals.Remove(local);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
-                contexto.Locais.Remove(local);
-                contexto.SaveChanges();
-
-                return RedirectToAction("Index");
-            }
-            catch
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
             {
-                return View();
+                db.Dispose();
             }
+            base.Dispose(disposing);
         }
     }
 }

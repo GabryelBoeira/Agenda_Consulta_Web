@@ -25,6 +25,5 @@ namespace Agenda_Consulta_Web.Models.DAL
         public DbSet<Profissional> Profissionais { get; set; }
         public DbSet<Agendamento> Agendamentos { get; set; }
 
-        public System.Data.Entity.DbSet<Agenda_Consulta_Web.Models.LocaisViewModel> LocaisViewModels { get; set; }
     }
 }

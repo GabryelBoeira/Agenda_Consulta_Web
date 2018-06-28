@@ -1,10 +1,12 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Web.UI;
 
 namespace Agenda_Consulta_Web.Models
 {
+    [Table("Profissional")]
     public class Profissional : Pessoa 
     {
         [Required]

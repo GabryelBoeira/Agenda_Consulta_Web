@@ -1,5 +1,8 @@
-﻿namespace Agenda_Consulta_Web.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Agenda_Consulta_Web.Models
 {
+    [Table("TBEndereco")]
     public class Endereco
     {
         public int EnderecoID { get; set; }

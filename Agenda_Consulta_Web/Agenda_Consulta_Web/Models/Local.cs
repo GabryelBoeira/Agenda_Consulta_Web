@@ -1,8 +1,10 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Agenda_Consulta_Web.Models
 {
+    [Table("TBLocal")]
     public class Local
     {
         public int LocalID { get; set; }

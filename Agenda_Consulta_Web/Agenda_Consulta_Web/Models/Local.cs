@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Agenda_Consulta_Web.Models
 {
-    [Table("TBLocal")]
+    [Table("Local")]
     public class Local
     {
         public int LocalID { get; set; }
@@ -31,6 +31,6 @@ namespace Agenda_Consulta_Web.Models
 
 
         public int EnderecoID { get; set; }
-        public virtual Endereco _Endereco { get; set; }
+        public  Endereco _Endereco { get; set; }
     }
 }

@@ -198,6 +198,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AgendamentosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocaisController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PacientesController.cs" />
     <Compile Include="Controllers\ProfissionaisController.cs" />
@@ -290,6 +291,11 @@
     <Content Include="Views\Agendamentos\Details.cshtml" />
     <Content Include="Views\Agendamentos\Edit.cshtml" />
     <Content Include="Views\Agendamentos\Index.cshtml" />
+    <Content Include="Views\Locais\Create.cshtml" />
+    <Content Include="Views\Locais\Delete.cshtml" />
+    <Content Include="Views\Locais\Details.cshtml" />
+    <Content Include="Views\Locais\Edit.cshtml" />
+    <Content Include="Views\Locais\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

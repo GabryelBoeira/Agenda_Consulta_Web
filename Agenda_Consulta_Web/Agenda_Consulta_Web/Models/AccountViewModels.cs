@@ -111,12 +111,47 @@ namespace Agenda_Consulta_Web.Models
         public string Email { get; set; }
     }
 
-    public class LocalViewModel {
+    /// <summary>
+    /// ViewModel criada para adicionar os dados e local junto de endereço somente os campos necessario para serem 
+    /// utilizados pela cotroller e view para gerarem 
+    /// </summary>
+    public class LocalViewModel
+    {
+        //adicionado pois para gerar automaticamete neessida de um id para ser gerada.
+        public int ID { get; set; }
+        public int LocalID { get; set; }
 
-        public int Id { get; set; }
-        public IList<Endereco> Endereco { get; set; }
-        public IList<Local>  Loccal { get; set; }
-       
-    }    
+        [Display(Name = "Nome da sala")]
+        public string NomeLocal { get; set; }
+        //Dias da semana
+        public virtual bool Domingo { get; set; }
+        public virtual bool Segunda { get; set; }
+        public virtual bool Terca { get; set; }
+        public virtual bool Quarta { get; set; }
+        public virtual bool Quinta { get; set; }
+        public virtual bool Sexta { get; set; }
+        public virtual bool Sabado { get; set; }
+
+        //horario de trabalho
+        [Display(Name = "Horario inicial")]
+        [DataType(DataType.Time)]
+        public DateTime HrInicio { get; set; }
+
+        [Display(Name = "Horario final")]
+        [DataType(DataType.Time)]
+        public DateTime HrFim { get; set; }
+
+
+        public int EnderecoID { get; set; }
+
+        public string Cep { get; set; }
+        public string Rua { get; set; }
+        public int Numero { get; set; }
+        public string Complemento { get; set; }
+        public string Cidade { get; set; }
+        public string Uf { get; set; }
+
+    }
+     
        
     }

@@ -1,0 +1,162 @@
+﻿@model Agenda_Consulta_Web.Models.LocalViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>LocalViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LocalID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LocalID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomeLocal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeLocal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Domingo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Domingo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Segunda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Segunda)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Terca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Terca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quarta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quarta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quinta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quinta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sexta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sexta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sabado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sabado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HrInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HrInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HrFim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HrFim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EnderecoID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnderecoID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cep)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cep)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rua)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rua)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Numero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Numero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Complemento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Complemento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Uf)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Uf)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

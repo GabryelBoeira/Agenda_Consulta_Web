@@ -2,7 +2,7 @@
 
 namespace Agenda_Consulta_Web.Models
 {
-    [Table("TBEndereco")]
+    [Table("Endereco")]
     public class Endereco
     {
         public int EnderecoID { get; set; }

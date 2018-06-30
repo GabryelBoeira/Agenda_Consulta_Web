@@ -6,7 +6,6 @@ using System.Web.UI;
 
 namespace Agenda_Consulta_Web.Models
 {
-    [Table("Profissional")]
     public class Profissional : Pessoa 
     {
         [Required]

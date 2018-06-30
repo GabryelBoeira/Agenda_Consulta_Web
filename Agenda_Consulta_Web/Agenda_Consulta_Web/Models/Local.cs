@@ -31,6 +31,6 @@ namespace Agenda_Consulta_Web.Models
 
 
         public int EnderecoID { get; set; }
-        public  Endereco _Endereco { get; set; }
+        public Endereco _Endereco { get; set; }
     }
 }

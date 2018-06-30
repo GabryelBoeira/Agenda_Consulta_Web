@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<Agenda_Consulta_Web.Models.LocalViewModel>
+@using Agenda_Consulta_Web.Models
 
 @{
     ViewBag.Title = "Index";
@@ -62,62 +63,63 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NomeLocal)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Domingo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Segunda)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Terca)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Quarta)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Quinta)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sexta)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sabado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HrInicio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HrFim)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cep)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Rua)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Numero)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Complemento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cidade)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Uf)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id = item.ID })
-            @Html.ActionLink("Detales", "Details", new { id = item.ID })
-            @Html.ActionLink("Excluir", "Delete", new { id = item.ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeLocal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Domingo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Segunda)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Terca)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quarta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quinta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sexta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sabado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HrInicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HrFim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cep)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rua)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Numero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Complemento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Uf)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.ID })
+                @Html.ActionLink("Detales", "Details", new { id = item.ID })
+                @Html.ActionLink("Excluir", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
 
 </table>

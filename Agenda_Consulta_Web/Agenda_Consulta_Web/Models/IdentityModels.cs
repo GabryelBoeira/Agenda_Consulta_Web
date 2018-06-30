@@ -37,5 +37,7 @@ namespace Agenda_Consulta_Web.Models
         public System.Data.Entity.DbSet<Agenda_Consulta_Web.Models.Endereco> Enderecos { get; set; }
 
         public System.Data.Entity.DbSet<Agenda_Consulta_Web.Models.LocalViewModel> LocalViewModels { get; set; }
+
+        public System.Data.Entity.DbSet<Agenda_Consulta_Web.Profissional> Profissionals { get; set; }
     }
 }

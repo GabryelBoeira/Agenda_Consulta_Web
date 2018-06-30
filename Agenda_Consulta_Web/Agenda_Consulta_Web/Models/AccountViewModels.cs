@@ -144,11 +144,22 @@ namespace Agenda_Consulta_Web.Models
 
         public int EnderecoID { get; set; }
 
+        [Required(ErrorMessage="Cep obrigatorio")]
         public string Cep { get; set; }
+
+        [Required(ErrorMessage = "Rua obrigatorio")]
         public string Rua { get; set; }
+
+        [Required(ErrorMessage = "Número obrigatorio")]
         public int Numero { get; set; }
+
         public string Complemento { get; set; }
+
+        [Required(ErrorMessage = "Cidade obrigatorio")]
         public string Cidade { get; set; }
+
+        [Display(Name = "Estado")]
+        [Required(ErrorMessage = "Estado obrigatorio")]
         public string Uf { get; set; }
 
     }

@@ -1,37 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Agenda_Consulta_Web;
 using Agenda_Consulta_Web.Models;
-using Agenda_Consulta_Web.Models.DAL;
 
 namespace Agenda_Consulta_Web.Controllers
 {
     public class ProfissionaisController : Controller
     {
-        // GET
+        private ApplicationDbContext db = new ApplicationDbContext();
+
+        // GET: Profissionais
         public ActionResult Index()
         {
-            Contexto contexto = new Contexto();
-            List<Profissional> profissionais =  contexto.Profissionais.ToList();
-            return View(profissionais);
+            return View(db.Profissionals.ToList());
         }
 
-        // GET
+        // GET: Profissionais/Details/5
         public ActionResult Details(int? id)
         {
-
-            //verifiaca se o id estiver nulo 
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
             }
-            Contexto contexto = new Contexto();
-
-            Profissional profissional = contexto.Profissionais.Find(id);
+            Profissional profissional = db.Profissionals.Find(id);
             if (profissional == null)
             {
                 return HttpNotFound();
@@ -39,121 +36,93 @@ namespace Agenda_Consulta_Web.Controllers
             return View(profissional);
         }
 
-        // GET
+        // GET: Profissionais/Create
         public ActionResult Create()
         {
             return View();
-
         }
 
-        // POST
+        // POST: Profissionais/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        
-        public ActionResult Create(Profissional profissional)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "ID,ResgistroProfissional,Especialidade,Domingo,Segunda,Terca,Quarta,Quinta,Sexta,Sabado,HrInicio,HrFim,Nome,Celular,Email,CPF,DtNascimento")] Profissional profissional)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    Contexto contexto = new Contexto();
-                    contexto.Profissionais.Add(profissional);
-                    contexto.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-
-                return View(profissional);
-
+                db.Profissionals.Add(profissional);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(profissional);
         }
-        
-        // GET
+
+        // GET: Profissionais/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            Contexto contexto = new Contexto();
-            Profissional profissional = contexto.Profissionais.Find(id);
-
+            Profissional profissional = db.Profissionals.Find(id);
             if (profissional == null)
             {
                 return HttpNotFound();
             }
-
             return View(profissional);
         }
 
-        // POST
+        // POST: Profissionais/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Edit(int? id, Profissional profissional)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "ID,ResgistroProfissional,Especialidade,Domingo,Segunda,Terca,Quarta,Quinta,Sexta,Sabado,HrInicio,HrFim,Nome,Celular,Email,CPF,DtNascimento")] Profissional profissional)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    Contexto contexto = new Contexto();
-
-                    contexto.Entry(profissional).State = 
-                        System.Data.Entity.EntityState.Modified;
-                    contexto.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-
-                return View(profissional);
-
+                db.Entry(profissional).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            catch
-            {
-                return View(profissional);
-            }
+            return View(profissional);
         }
 
-        // GET
+        // GET: Profissionais/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            Contexto contexto = new Contexto();
-
-            Profissional profissional = contexto.Profissionais.Find(id);
-
+            Profissional profissional = db.Profissionals.Find(id);
             if (profissional == null)
             {
                 return HttpNotFound();
             }
-
             return View(profissional);
         }
 
-        // POST
+        // POST: Profissionais/Delete/5
         [HttpPost, ActionName("Delete")]
-        public ActionResult Delete(int id)
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
         {
-            try
-            {
-                Contexto contexto = new Contexto();
-                Profissional profissional = contexto.Profissionais.Find(id);
-
-                contexto.Profissionais.Remove(profissional);
-                contexto.SaveChanges();
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            Profissional profissional = db.Profissionals.Find(id);
+            db.Profissionals.Remove(profissional);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
-     
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
     }
 }

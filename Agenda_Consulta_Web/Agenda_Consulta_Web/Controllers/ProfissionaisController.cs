@@ -13,18 +13,18 @@ using Agenda_Consulta_Web.Models.DAL;
 namespace Agenda_Consulta_Web.Controllers
 {
     public class ProfissionaisController : Controller
-    {
-        private Contexto db = new Contexto();
-
+    {     
         // GET: Profissionais
         public ActionResult Index()
         {
+            Contexto db = new Contexto();
             return View(db.Profissionais.ToList());
         }
 
         // GET: Profissionais/Details/5
         public ActionResult Details(int? id)
         {
+            Contexto db = new Contexto();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -48,9 +48,10 @@ namespace Agenda_Consulta_Web.Controllers
        
         [HttpPost]
         [Authorize]
-        [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,ResgistroProfissional,Especialidade,Domingo,Segunda,Terca,Quarta,Quinta,Sexta,Sabado,HrInicio,HrFim,Nome,Celular,Email,CPF,DtNascimento")] Profissional profissional)
         {
+            Contexto db = new Contexto();
+
             if (ModelState.IsValid)
             {
                 db.Profissionais.Add(profissional);
@@ -65,6 +66,8 @@ namespace Agenda_Consulta_Web.Controllers
         [Authorize]
         public ActionResult Edit(int? id)
         {
+            Contexto db = new Contexto();
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -83,6 +86,8 @@ namespace Agenda_Consulta_Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,ResgistroProfissional,Especialidade,Domingo,Segunda,Terca,Quarta,Quinta,Sexta,Sabado,HrInicio,HrFim,Nome,Celular,Email,CPF,DtNascimento")] Profissional profissional)
         {
+            Contexto db = new Contexto();
+
             if (ModelState.IsValid)
             {
                 db.Entry(profissional).State = EntityState.Modified;
@@ -96,6 +101,7 @@ namespace Agenda_Consulta_Web.Controllers
         [Authorize]
         public ActionResult Delete(int? id)
         {
+            Contexto db = new Contexto();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -108,26 +114,18 @@ namespace Agenda_Consulta_Web.Controllers
             return View(profissional);
         }
 
-        // POST: Profissionais/Delete/5
-        [HttpPost, ActionName("Delete")]
-
+        // POST: Profissionais/Delete       
         [Authorize]
         [ValidateAntiForgeryToken]
+        [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
+            Contexto db = new Contexto();
+
             Profissional profissional = db.Profissionais.Find(id);
             db.Profissionais.Remove(profissional);
             db.SaveChanges();
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }

@@ -29,7 +29,7 @@ namespace Agenda_Consulta_Web.Models
         public string CPF { get; set; }
 
         [Required]        
-        [DataType(DataType.PhoneNumber)]
+        [DataType(DataType.Date)]
         [Display(Name = "Data de Nascimento")]
         public DateTime DtNascimento { get; set; } 
  

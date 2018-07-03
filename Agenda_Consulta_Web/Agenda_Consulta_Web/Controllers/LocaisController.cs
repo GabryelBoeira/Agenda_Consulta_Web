@@ -10,6 +10,7 @@ using Agenda_Consulta_Web.Models;
 
 namespace Agenda_Consulta_Web.Controllers
 {
+    [Authorize]
     public class LocaisController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

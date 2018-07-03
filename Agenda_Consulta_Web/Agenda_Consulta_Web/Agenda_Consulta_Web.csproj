@@ -192,7 +192,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Agendamentoes.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -205,12 +204,9 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PacientesController.cs" />
     <Compile Include="Controllers\ProfissionaisController.cs" />
-    <Compile Include="Endereco.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Local.cs" />
-    <Compile Include="Model1.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Agendamento.cs" />
     <Compile Include="Models\DAL\Contexto.cs" />
@@ -221,8 +217,6 @@
     <Compile Include="Models\Paciente.cs" />
     <Compile Include="Models\Pessoa.cs" />
     <Compile Include="Models\Profissional.cs" />
-    <Compile Include="Pacientes.cs" />
-    <Compile Include="Profissional.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

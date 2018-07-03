@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace Agenda_Consulta_Web.Controllers
 {
+    [Authorize]
     public class PacientesController : Controller
     {
         // GET

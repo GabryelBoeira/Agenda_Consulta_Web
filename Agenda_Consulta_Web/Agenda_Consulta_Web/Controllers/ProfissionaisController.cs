@@ -8,17 +8,18 @@ using System.Web;
 using System.Web.Mvc;
 using Agenda_Consulta_Web;
 using Agenda_Consulta_Web.Models;
+using Agenda_Consulta_Web.Models.DAL;
 
 namespace Agenda_Consulta_Web.Controllers
 {
     public class ProfissionaisController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private Contexto db = new Contexto();
 
         // GET: Profissionais
         public ActionResult Index()
         {
-            return View(db.Profissionals.ToList());
+            return View(db.Profissionais.ToList());
         }
 
         // GET: Profissionais/Details/5
@@ -28,7 +29,7 @@ namespace Agenda_Consulta_Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Profissional profissional = db.Profissionals.Find(id);
+            Profissional profissional = db.Profissionais.Find(id);
             if (profissional == null)
             {
                 return HttpNotFound();
@@ -37,21 +38,22 @@ namespace Agenda_Consulta_Web.Controllers
         }
 
         // GET: Profissionais/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
         }
 
         // POST: Profissionais/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+       
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,ResgistroProfissional,Especialidade,Domingo,Segunda,Terca,Quarta,Quinta,Sexta,Sabado,HrInicio,HrFim,Nome,Celular,Email,CPF,DtNascimento")] Profissional profissional)
         {
             if (ModelState.IsValid)
             {
-                db.Profissionals.Add(profissional);
+                db.Profissionais.Add(profissional);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -59,14 +61,15 @@ namespace Agenda_Consulta_Web.Controllers
             return View(profissional);
         }
 
-        // GET: Profissionais/Edit/5
+        // GET: Profissionais/Edit/
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Profissional profissional = db.Profissionals.Find(id);
+            Profissional profissional = db.Profissionais.Find(id);
             if (profissional == null)
             {
                 return HttpNotFound();
@@ -74,10 +77,9 @@ namespace Agenda_Consulta_Web.Controllers
             return View(profissional);
         }
 
-        // POST: Profissionais/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Profissionais/Edit/
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,ResgistroProfissional,Especialidade,Domingo,Segunda,Terca,Quarta,Quinta,Sexta,Sabado,HrInicio,HrFim,Nome,Celular,Email,CPF,DtNascimento")] Profissional profissional)
         {
@@ -91,13 +93,14 @@ namespace Agenda_Consulta_Web.Controllers
         }
 
         // GET: Profissionais/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Profissional profissional = db.Profissionals.Find(id);
+            Profissional profissional = db.Profissionais.Find(id);
             if (profissional == null)
             {
                 return HttpNotFound();
@@ -107,11 +110,13 @@ namespace Agenda_Consulta_Web.Controllers
 
         // POST: Profissionais/Delete/5
         [HttpPost, ActionName("Delete")]
+
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Profissional profissional = db.Profissionals.Find(id);
-            db.Profissionals.Remove(profissional);
+            Profissional profissional = db.Profissionais.Find(id);
+            db.Profissionais.Remove(profissional);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

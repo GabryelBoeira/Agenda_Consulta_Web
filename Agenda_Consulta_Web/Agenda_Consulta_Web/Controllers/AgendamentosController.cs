@@ -11,6 +11,8 @@ using Agenda_Consulta_Web.Models.DAL;
 
 namespace Agenda_Consulta_Web.Controllers
 {
+    //somente agendar com usuario logado 
+    [Authorize]
     public class AgendamentosController : Controller
     {
         private Contexto db = new Contexto();

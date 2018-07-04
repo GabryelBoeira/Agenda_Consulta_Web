@@ -42,7 +42,7 @@ namespace Agenda_Consulta_Web.Controllers
         // GET: Agendamentos/Create
         public ActionResult Create()
         {
-            ViewBag.LocalID = new SelectList(db.LocalViewModels, "LocalID", "NomeLocal");
+            ViewBag.LocalViewModelID = new SelectList(db.LocalViewModels, "LocalID", "NomeLocal");
             ViewBag.PacienteID = new SelectList(db.Pacientes, "ID", "Nome");
             ViewBag.ProfissionalID = new SelectList(db.Profissionais, "ID", "Nome");
             return View();
@@ -73,7 +73,7 @@ namespace Agenda_Consulta_Web.Controllers
                
             }
 
-            ViewBag.LocalID = new SelectList(db.LocalViewModels, "LocalID", "NomeLocal", agendamento.LocalID);
+            ViewBag.LocalViewModelID = new SelectList(db.LocalViewModels, "LocalID", "NomeLocal", agendamento.LocalViewModelID);
             ViewBag.PacienteID = new SelectList(db.Pacientes, "ID", "Nome", agendamento.PacienteID);
             ViewBag.ProfissionalID = new SelectList(db.Profissionais, "ID", "Nome", agendamento.ProfissionalID);
             return View(agendamento);
@@ -91,7 +91,7 @@ namespace Agenda_Consulta_Web.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.LocalID = new SelectList(db.LocalViewModels, "LocalID", "NomeLocal", agendamento.LocalID);
+            ViewBag.LocalViewModelID = new SelectList(db.LocalViewModels, "LocalViewModelID", "NomeLocal", agendamento.LocalViewModelID);
             ViewBag.PacienteID = new SelectList(db.Pacientes, "ID", "Nome", agendamento.PacienteID);
             ViewBag.ProfissionalID = new SelectList(db.Profissionais, "ID", "Nome", agendamento.ProfissionalID);
             return View(agendamento);
@@ -120,8 +120,7 @@ namespace Agenda_Consulta_Web.Controllers
                             }
                         }
                     }
-                }
-               
+                }               
             }
             ViewBag.LocalID = new SelectList(db.LocalViewModels, "LocalID", "NomeLocal", agendamento.LocalID);
             ViewBag.PacienteID = new SelectList(db.Pacientes, "ID", "Nome", agendamento.PacienteID);

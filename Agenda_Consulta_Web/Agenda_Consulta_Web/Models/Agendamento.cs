@@ -11,8 +11,8 @@ namespace Agenda_Consulta_Web.Models
         public int AgendamentoID { get; set; }
 
         [Display(Name = "Sala para a consulta")]
-        public int LocalID { get; set; }
-        public virtual Local _Local { get; set; }
+        public int LocalViewModelID { get; set; }
+        public virtual LocalViewModel _LocalViewModel { get; set; }
 
         [Display(Name = "Nome do paciente")]
         public int PacienteID { get; set; }

@@ -7,13 +7,14 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Agenda_Consulta_Web.Models;
+using Agenda_Consulta_Web.Models.DAL;
 
 namespace Agenda_Consulta_Web.Controllers
 {
     [Authorize]
     public class LocaisController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private Contexto db = new Contexto();
 
         // GET: Locais
         public ActionResult Index()
@@ -43,8 +44,6 @@ namespace Agenda_Consulta_Web.Controllers
         }
 
         // POST: Locais/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(LocalViewModel localViewModel)

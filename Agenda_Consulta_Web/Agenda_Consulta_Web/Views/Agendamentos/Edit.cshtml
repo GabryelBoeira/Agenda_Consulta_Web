@@ -18,10 +18,10 @@
         @Html.HiddenFor(model => model.AgendamentoID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.LocalID, "LocalID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.LocalViewModelID, "LocalViewModelID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("LocalID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.LocalID, "", new { @class = "text-danger" })
+                @Html.DropDownList("LocalViewModelID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.LocalViewModelID, "", new { @class = "text-danger" })
             </div>
         </div>
 

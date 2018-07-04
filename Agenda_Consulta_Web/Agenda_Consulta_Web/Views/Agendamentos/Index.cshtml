@@ -12,7 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model._Local.NomeLocal)
+            @Html.DisplayNameFor(model => model._LocalViewModel.NomeLocal)
         </th>
         <th>
             @Html.DisplayNameFor(model => model._Paciente.Nome)
@@ -32,7 +32,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item._Local.NomeLocal)
+            @Html.DisplayFor(modelItem => item._LocalViewModel.NomeLocal)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item._Paciente.Nome)
@@ -47,9 +47,9 @@
             @Html.DisplayFor(modelItem => item.HoraConsulta)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.AgendamentoID }, new { @class = "btn btn-default" })
-            @Html.ActionLink("Detales", "Details", new { id=item.AgendamentoID }, new { @class = "btn btn-default" })
-            @Html.ActionLink("Deletar", "Delete", new { id = item.AgendamentoID }, new { @class = "btn btn-default" })
+            @Html.ActionLink("Edit", "Edit", new { id=item.AgendamentoID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AgendamentoID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AgendamentoID })
         </td>
     </tr>
 }

@@ -73,9 +73,7 @@ namespace Agenda_Consulta_Web.Controllers
             return View(localViewModel);
         }
 
-        // POST: Locais/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Locais/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(LocalViewModel localViewModel)

@@ -210,9 +210,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Agendamento.cs" />
     <Compile Include="Models\DAL\Contexto.cs" />
-    <Compile Include="Models\Endereco.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\Local.cs" />
     <Compile Include="Models\LocalViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Paciente.cs" />
@@ -284,11 +282,6 @@
     <Content Include="Views\Pacientes\Details.cshtml" />
     <Content Include="Views\Pacientes\Delete.cshtml" />
     <Content Include="Views\Pacientes\Edit.cshtml" />
-    <Content Include="Views\Agendamentos\Create.cshtml" />
-    <Content Include="Views\Agendamentos\Delete.cshtml" />
-    <Content Include="Views\Agendamentos\Details.cshtml" />
-    <Content Include="Views\Agendamentos\Edit.cshtml" />
-    <Content Include="Views\Agendamentos\Index.cshtml" />
     <Content Include="Views\Locais\Create.cshtml" />
     <Content Include="Views\Locais\Delete.cshtml" />
     <Content Include="Views\Locais\Details.cshtml" />
@@ -299,6 +292,11 @@
     <Content Include="Views\Profissionais\Delete.cshtml" />
     <Content Include="Views\Profissionais\Details.cshtml" />
     <Content Include="Views\Profissionais\Edit.cshtml" />
+    <Content Include="Views\Agendamentos\Create.cshtml" />
+    <Content Include="Views\Agendamentos\Delete.cshtml" />
+    <Content Include="Views\Agendamentos\Details.cshtml" />
+    <Content Include="Views\Agendamentos\Edit.cshtml" />
+    <Content Include="Views\Agendamentos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -14,7 +14,6 @@ namespace Agenda_Consulta_Web.Models
     {
         //adicionado pois para gerar automaticamete neessida de um id para ser gerada.
         public int ID { get; set; }
-        public int LocalID { get; set; }
 
         [Display(Name = "Nome da sala")]
         public string NomeLocal { get; set; }
@@ -35,8 +34,6 @@ namespace Agenda_Consulta_Web.Models
         [Display(Name = "Horario final")]
         [DataType(DataType.Time)]
         public DateTime HrFim { get; set; }
-
-        public int EnderecoID { get; set; }
 
         [Required(ErrorMessage = "Cep obrigatorio")]
         public string Cep { get; set; }

@@ -42,16 +42,16 @@ namespace Agenda_Consulta_Web.Controllers
         // GET: Agendamentos/Create
         public ActionResult Create()
         {
-            ViewBag.LocalID = new SelectList(db.Locais, "LocalID", "NomeLocal");
+            ViewBag.LocalID = new SelectList(db.LocalViewModels, "LocalID", "NomeLocal");
             ViewBag.PacienteID = new SelectList(db.Pacientes, "ID", "Nome");
-            ViewBag.ProfissionalID = new SelectList(db.Profissionais, "ID", "ResgistroProfissional");
+            ViewBag.ProfissionalID = new SelectList(db.Profissionais, "ID", "Nome");
             return View();
         }
 
         // POST
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AgendamentoID,LocalID,PacienteID,ProfissionalID,DataConsulta,HoraConsulta")] Agendamento agendamento)
+        public ActionResult Create(Agendamento agendamento)
         {
             if (ModelState.IsValid)
             {
@@ -73,9 +73,9 @@ namespace Agenda_Consulta_Web.Controllers
                
             }
 
-            ViewBag.LocalID = new SelectList(db.Locais, "LocalID", "NomeLocal", agendamento.LocalID);
+            ViewBag.LocalID = new SelectList(db.LocalViewModels, "LocalID", "NomeLocal", agendamento.LocalID);
             ViewBag.PacienteID = new SelectList(db.Pacientes, "ID", "Nome", agendamento.PacienteID);
-            ViewBag.ProfissionalID = new SelectList(db.Profissionais, "ID", "ResgistroProfissional", agendamento.ProfissionalID);
+            ViewBag.ProfissionalID = new SelectList(db.Profissionais, "ID", "Nome", agendamento.ProfissionalID);
             return View(agendamento);
         }
 
@@ -91,9 +91,9 @@ namespace Agenda_Consulta_Web.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.LocalID = new SelectList(db.Locais, "LocalID", "NomeLocal", agendamento.LocalID);
+            ViewBag.LocalID = new SelectList(db.LocalViewModels, "LocalID", "NomeLocal", agendamento.LocalID);
             ViewBag.PacienteID = new SelectList(db.Pacientes, "ID", "Nome", agendamento.PacienteID);
-            ViewBag.ProfissionalID = new SelectList(db.Profissionais, "ID", "ResgistroProfissional", agendamento.ProfissionalID);
+            ViewBag.ProfissionalID = new SelectList(db.Profissionais, "ID", "Nome", agendamento.ProfissionalID);
             return View(agendamento);
         }
 
@@ -123,9 +123,9 @@ namespace Agenda_Consulta_Web.Controllers
                 }
                
             }
-            ViewBag.LocalID = new SelectList(db.Locais, "LocalID", "NomeLocal", agendamento.LocalID);
+            ViewBag.LocalID = new SelectList(db.LocalViewModels, "LocalID", "NomeLocal", agendamento.LocalID);
             ViewBag.PacienteID = new SelectList(db.Pacientes, "ID", "Nome", agendamento.PacienteID);
-            ViewBag.ProfissionalID = new SelectList(db.Profissionais, "ID", "ResgistroProfissional", agendamento.ProfissionalID);
+            ViewBag.ProfissionalID = new SelectList(db.Profissionais, "ID", "Nome", agendamento.ProfissionalID);
             return View(agendamento);
         }
 

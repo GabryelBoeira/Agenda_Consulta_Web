@@ -30,7 +30,5 @@ namespace Agenda_Consulta_Web.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<Agenda_Consulta_Web.Models.LocalViewModel> LocalViewModels { get; set; }
-
     }
 }

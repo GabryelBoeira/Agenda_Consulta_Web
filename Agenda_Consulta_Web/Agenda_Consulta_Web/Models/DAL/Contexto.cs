@@ -20,10 +20,9 @@ namespace Agenda_Consulta_Web.Models.DAL
         }
 
         public DbSet<Paciente> Pacientes { get; set; }
-        public DbSet<Endereco> Enderecos { get; set; }
-        public DbSet<Local> Locais { get; set; }
         public DbSet<Profissional> Profissionais { get; set; }
         public DbSet<Agendamento> Agendamentos { get; set; }
+        public DbSet<LocalViewModel> LocalViewModels { get; set; }
 
     }
 }

@@ -213,6 +213,7 @@
     <Compile Include="Models\Endereco.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Local.cs" />
+    <Compile Include="Models\LocalViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Paciente.cs" />
     <Compile Include="Models\Pessoa.cs" />
@@ -301,7 +302,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Enderecos\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

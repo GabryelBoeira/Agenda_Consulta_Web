@@ -15,14 +15,14 @@ namespace Agenda_Consulta_Web.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Sua página de descrição do aplicativo.";
+            ViewBag.Message = "Your application description page.";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Sua pagina de contatos.";
+            ViewBag.Message = "Your contact page.";
 
             return View();
         }

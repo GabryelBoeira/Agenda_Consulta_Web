@@ -28,14 +28,14 @@ namespace Agenda_Consulta_Web.Models
     public class SetPasswordViewModel
     {
         [Required]
-        [StringLength(100, ErrorMessage = "O {0} deve ter pelo menos {2} caracteres.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "{0} deve ter pelo menos {2} caracteres.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Nova Senha")]
+        [Display(Name = "Nova senha")]
         public string NewPassword { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirme a nova Senha")]
-        [Compare("NewPassword", ErrorMessage = "As senhas não correspondem.")]
+        [Display(Name = "Confirmar nova senha")]
+        [Compare("NewPassword", ErrorMessage = "A nova senha e a senha de confirmação não correspondem.")]
         public string ConfirmPassword { get; set; }
     }
 
@@ -43,18 +43,18 @@ namespace Agenda_Consulta_Web.Models
     {
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Senha Atual")]
+        [Display(Name = "Senha atual")]
         public string OldPassword { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "O {0} deve ter pelo menos {2} caracteres." , MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "{0} deve ter pelo menos {2} caracteres.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Nova Senha")]
+        [Display(Name = "Nova senha")]
         public string NewPassword { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirmar nova Senha")]
-        [Compare("NewPassword", ErrorMessage = "As senhas não correspondem.")]
+        [Display(Name = "Confirmar nova senha")]
+        [Compare("NewPassword", ErrorMessage = "A nova senha e a senha de confirmação não correspondem.")]
         public string ConfirmPassword { get; set; }
     }
 
@@ -62,7 +62,7 @@ namespace Agenda_Consulta_Web.Models
     {
         [Required]
         [Phone]
-        [Display(Name = "Telefone fixo")]
+        [Display(Name = "Número de telefone")]
         public string Number { get; set; }
     }
 
@@ -74,7 +74,7 @@ namespace Agenda_Consulta_Web.Models
 
         [Required]
         [Phone]
-        [Display(Name = "Celular")]
+        [Display(Name = "Número de telefone")]
         public string PhoneNumber { get; set; }
     }
 

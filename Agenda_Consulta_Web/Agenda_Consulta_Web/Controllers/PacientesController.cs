@@ -1,36 +1,35 @@
-﻿using Agenda_Consulta_Web.Models;
-using Agenda_Consulta_Web.Models.DAL;
+﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
+using Agenda_Consulta_Web.Models;
+using Agenda_Consulta_Web.Models.DAL;
 
 namespace Agenda_Consulta_Web.Controllers
 {
     [Authorize]
     public class PacientesController : Controller
     {
-        // GET
+        private Contexto db = new Contexto();
+
+        // GET: Pacientes
         public ActionResult Index()
         {
-            Contexto contexto = new Contexto();
-            List<Paciente> pacientes = contexto.Pacientes.ToList();
-
-            return View(pacientes);
+            return View(db.Pacientes.ToList());
         }
 
-        // GET
-        public ActionResult Details(int? id)        {
-
-            //verifiaca se o id estiver nulo 
+        // GET: Pacientes/Details/5
+        public ActionResult Details(int? id)
+        {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
             }
-            Contexto contexto = new Contexto();
-
-            Paciente paciente = contexto.Pacientes.Find(id);
+            Paciente paciente = db.Pacientes.Find(id);
             if (paciente == null)
             {
                 return HttpNotFound();
@@ -38,121 +37,93 @@ namespace Agenda_Consulta_Web.Controllers
             return View(paciente);
         }
 
-        // GET
+        // GET: Pacientes/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST
+        // POST: Pacientes/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Create(Paciente paciente)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "ID,Nome,Celular,Email,CPF,DtNascimento")] Paciente paciente)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    Contexto contexto = new Contexto();
-                    contexto.Pacientes.Add(paciente);
-                    contexto.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-
-                return View(paciente);
-
+                db.Pacientes.Add(paciente);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(paciente);
         }
 
-        // GET
+        // GET: Pacientes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            Contexto contexto = new Contexto();
-            Paciente paciente = contexto.Pacientes.Find(id);
-
+            Paciente paciente = db.Pacientes.Find(id);
             if (paciente == null)
             {
                 return HttpNotFound();
             }
-
             return View(paciente);
         }
 
-        // POST
+        // POST: Pacientes/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Edit(int? id, Paciente paciente)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "ID,Nome,Celular,Email,CPF,DtNascimento")] Paciente paciente)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    Contexto contexto = new Contexto();
-
-                    contexto.Entry(paciente).State =
-                        System.Data.Entity.EntityState.Modified;
-                    contexto.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-
-                return View(paciente);
-
+                db.Entry(paciente).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            catch
-            {
-                return View(paciente);
-            }
+            return View(paciente);
         }
 
-        // GET
+        // GET: Pacientes/Delete/5
         public ActionResult Delete(int? id)
         {
-            //busca para confirmar antes de excluir
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            Contexto contexto = new Contexto();
-
-            Paciente paciente = contexto.Pacientes.Find(id);
-
+            Paciente paciente = db.Pacientes.Find(id);
             if (paciente == null)
             {
                 return HttpNotFound();
             }
-
             return View(paciente);
         }
 
-        // POST
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        // POST: Pacientes/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
         {
-            try
-            {
-                //exclui os dados
-                Contexto contexto = new Contexto();
-                Paciente paciente = contexto.Pacientes.Find(id);
-
-                contexto.Pacientes.Remove(paciente);
-                contexto.SaveChanges();
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            Paciente paciente = db.Pacientes.Find(id);
+            db.Pacientes.Remove(paciente);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
-    
 
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
     }
 }

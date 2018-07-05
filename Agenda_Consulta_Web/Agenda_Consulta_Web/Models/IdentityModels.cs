@@ -6,14 +6,14 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Agenda_Consulta_Web.Models
 {
-    // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
+    // É possível adicionar dados do perfil do usuário adicionando mais propriedades na sua classe ApplicationUser, visite https://go.microsoft.com/fwlink/?LinkID=317594 para obter mais informações.
     public class ApplicationUser : IdentityUser
     {
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
-            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
+            // Observe que o authenticationType deve corresponder àquele definido em CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
-            // Add custom user claims here
+            // Adicionar declarações de usuário personalizado aqui
             return userIdentity;
         }
     }
@@ -29,13 +29,5 @@ namespace Agenda_Consulta_Web.Models
         {
             return new ApplicationDbContext();
         }
-
-        public System.Data.Entity.DbSet<Agenda_Consulta_Web.Models.Agendamento> Agendamentoes { get; set; }
-
-        public System.Data.Entity.DbSet<Agenda_Consulta_Web.Models.LocalViewModel> LocalViewModels { get; set; }
-
-        public System.Data.Entity.DbSet<Agenda_Consulta_Web.Models.Paciente> Pacientes { get; set; }
-
-        public System.Data.Entity.DbSet<Agenda_Consulta_Web.Models.Profissional> Profissionals { get; set; }
     }
 }

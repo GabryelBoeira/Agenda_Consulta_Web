@@ -11,7 +11,6 @@ using Agenda_Consulta_Web.Models.DAL;
 
 namespace Agenda_Consulta_Web.Controllers
 {
-    [Authorize]
     public class LocaisController : Controller
     {
         private Contexto db = new Contexto();
@@ -44,9 +43,11 @@ namespace Agenda_Consulta_Web.Controllers
         }
 
         // POST: Locais/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(LocalViewModel localViewModel)
+        public ActionResult Create([Bind(Include = "ID,NomeLocal,Domingo,Segunda,Terca,Quarta,Quinta,Sexta,Sabado,HrInicio,HrFim,Cep,Rua,Numero,Complemento,Cidade,Uf")] LocalViewModel localViewModel)
         {
             if (ModelState.IsValid)
             {
@@ -73,14 +74,15 @@ namespace Agenda_Consulta_Web.Controllers
             return View(localViewModel);
         }
 
-        // POST: Locais/Edit
+        // POST: Locais/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(LocalViewModel localViewModel)
+        public ActionResult Edit([Bind(Include = "ID,NomeLocal,Domingo,Segunda,Terca,Quarta,Quinta,Sexta,Sabado,HrInicio,HrFim,Cep,Rua,Numero,Complemento,Cidade,Uf")] LocalViewModel localViewModel)
         {
             if (ModelState.IsValid)
             {
-                //adicionar logica aqui para salvar 
                 db.Entry(localViewModel).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

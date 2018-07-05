@@ -15,9 +15,9 @@ namespace Agenda_Consulta_Web.Models.DAL
             //Database.SetInitializer<Contexto>(new DropCreateDatabaseAlways<Contexto>());
 
             //Migrantions (Utilizar para produção)
-            //Database.SetInitializer<Contexto>(new DropCreateDatabaseIfModelChanges<Contexto>());
+            Database.SetInitializer<Contexto>(new DropCreateDatabaseIfModelChanges<Contexto>());
 
-            Database.SetInitializer<Contexto>( new CreateDatabaseIfNotExists<Contexto>());
+            //Database.SetInitializer<Contexto>( new CreateDatabaseIfNotExists<Contexto>());
         }
 
         public DbSet<Paciente> Pacientes { get; set; }

@@ -11,6 +11,7 @@ using Agenda_Consulta_Web.Models.DAL;
 
 namespace Agenda_Consulta_Web.Controllers
 {
+    [Authorize]
     public class LocaisController : Controller
     {
         private Contexto db = new Contexto();
@@ -123,6 +124,22 @@ namespace Agenda_Consulta_Web.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public bool ValidaHoraAtendimento(Agendamento agendamento)
+        {
+            LocalViewModel localViewModel = db.LocalViewModels.Find(agendamento.LocalViewModelID);
+
+            if (agendamento.HoraConsulta.Hour < localViewModel.HrInicio.Hour ||
+                agendamento.HoraConsulta.AddMinutes(agendamento.TempoEmMinutosConsulta).Minute > localViewModel.HrFim.Minute) {
+                return false;
+            }                    
+            return true;
+        }
+
+        public LocalViewModel localDiasemana(Agendamento agendamento)
+        {
+            LocalViewModel localViewModel = db.LocalViewModels.Find(agendamento.LocalViewModelID);
+            return localViewModel;
         }
     }
 }

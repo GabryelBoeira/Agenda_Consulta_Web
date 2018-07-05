@@ -1,0 +1,58 @@
+﻿@model Agenda_Consulta_Web.Models.Agendamento
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Agendamento</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model._LocalViewModel.NomeLocal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._LocalViewModel.NomeLocal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model._Paciente.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._Paciente.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model._Profissional.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._Profissional.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataConsulta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataConsulta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HoraConsulta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoraConsulta)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.AgendamentoID }) |
+    @Html.ActionLink("Retornar para a lista", "Index")
+</p>

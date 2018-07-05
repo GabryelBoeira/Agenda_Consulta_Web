@@ -1,16 +1,16 @@
 ﻿@model Agenda_Consulta_Web.Models.LocalViewModel
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Editar";
 }
 
-<h2>Edit</h2>
+<h2>Editar</h2>
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>LocalViewModel</h4>
         <hr />
@@ -168,7 +168,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Retornar para a lista", "Index")
 </div>
 
 @section Scripts {

@@ -125,5 +125,11 @@ namespace Agenda_Consulta_Web.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public Paciente pacienteDiasemana(Agendamento agendamento)
+        {
+            Paciente paciente = db.Pacientes.Find(agendamento.PacienteID);
+            return paciente;
+        }
     }
 }

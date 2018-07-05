@@ -124,5 +124,25 @@ namespace Agenda_Consulta_Web.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public bool ValidaHoraAtendimento(Agendamento agendamento)
+        {
+
+            Profissional profissional = db.Profissionais.Find(agendamento.ProfissionalID);
+
+            //Validando horário em que o profissional atende e o horário que o local está aberto para atendimento (não valida dia da semana e horário com consulta já marcada)
+            if (agendamento.HoraConsulta.Hour < profissional.HrInicio.Hour ||
+                agendamento.HoraConsulta.AddMinutes(agendamento.TempoEmMinutosConsulta).Minute > profissional.HrFim.Minute)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public Profissional profissionalDiasemana(Agendamento agendamento)
+        {
+            Profissional profissional = db.Profissionais.Find(agendamento.ProfissionalID);
+            return profissional;
+        }
     }
 }

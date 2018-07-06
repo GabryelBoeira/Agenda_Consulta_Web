@@ -14,7 +14,7 @@ namespace Agenda_Consulta_Web.Controllers
     public class AgendamentosController : Controller
     {
         private Contexto db = new Contexto();
-        LocaisController local = new LocaisController();
+        LocaisController localModels = new LocaisController();
         ProfissionaisController prof = new ProfissionaisController();
         PacientesController paciente = new PacientesController(); 
 
@@ -54,9 +54,7 @@ namespace Agenda_Consulta_Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Agendamento agendamento)
         {
-            agendamento._Profissional = prof.profissionalDiasemana(agendamento);
-            agendamento._LocalViewModel = local.localDiasemana(agendamento);
-            agendamento._Paciente = paciente.pacienteDiasemana(agendamento);
+          
                 
             if (ModelState.IsValid)
             {
@@ -171,7 +169,7 @@ namespace Agenda_Consulta_Web.Controllers
             }
             else
             {
-                if (local.ValidaHoraAtendimento(agendamento))
+                if (localModels.ValidaHoraAtendimento(agendamento))
                 {
                     return false;
                 }
@@ -180,59 +178,59 @@ namespace Agenda_Consulta_Web.Controllers
             return true;
         }
 
-        public bool ValidaDiaDaSemanaAtendimento(Agendamento agendamento)
-        {
-            
+        public bool ValidaDiaDaSemanaAtendimento(Agendamento agendamento) { 
 
+            Profissional profissional = prof.profissionalDiasemana(agendamento);
+            LocalViewModel local = localModels.localDiasemana(agendamento);         
 
             //dia da semana em formato ddd para comparação (dom, seg, ter, qua, qui, sex, sab)
             //Validando dia da semana disponível para profissional e local
             String diaDaSemana = agendamento.DataConsulta.ToString("ddd");
             if (diaDaSemana.Equals("dom"))
             {
-                if (agendamento._Profissional.Domingo.Equals(null) || agendamento._LocalViewModel.Domingo.Equals(null))
+                if (profissional.Domingo.Equals(null) || local.Domingo.Equals(null))
                     return false;
             }
             else
             {
                 if (diaDaSemana.Equals("seg"))
                 {
-                    if (agendamento._Profissional.Segunda.Equals(null) || agendamento._LocalViewModel.Segunda.Equals(null))
+                    if (profissional.Segunda.Equals(null) || local.Segunda.Equals(null))
                         return false;
                 }
                 else
                 {
                     if (diaDaSemana.Equals("ter"))
                     {
-                        if (agendamento._Profissional.Terca.Equals(null) || agendamento._LocalViewModel.Terca.Equals(null))
+                        if (profissional.Terca.Equals(null) || local.Terca.Equals(null))
                             return false;
                     }
                     else
                     {
                         if (diaDaSemana.Equals("qua"))
                         {
-                            if (agendamento._Profissional.Quarta.Equals(null) || agendamento._LocalViewModel.Quarta.Equals(null))
+                            if (profissional.Quarta.Equals(null) || local.Quarta.Equals(null))
                                 return false;
                         }
                         else
                         {
                             if (diaDaSemana.Equals("qui"))
                             {
-                                if (agendamento._Profissional.Quinta.Equals(null) || agendamento._LocalViewModel.Quinta.Equals(null))
+                                if (profissional.Quinta.Equals(null) || local.Quinta.Equals(null))
                                     return false;
                             }
                             else
                             {
                                 if (diaDaSemana.Equals("sex"))
                                 {
-                                    if (agendamento._Profissional.Sexta.Equals(null) || agendamento._LocalViewModel.Sexta.Equals(null))
+                                    if (profissional.Sexta.Equals(null) || local.Sexta.Equals(null))
                                         return false;
                                 }
                                 else
                                 {
                                     if (diaDaSemana.Equals("sab"))
                                     {
-                                        if (agendamento._Profissional.Sabado.Equals(null) || agendamento._LocalViewModel.Sabado.Equals(null))
+                                        if (profissional.Sabado.Equals(null) || local.Sabado.Equals(null))
                                             return false;
                                     }
                                 }
@@ -246,13 +244,14 @@ namespace Agenda_Consulta_Web.Controllers
 
         public bool ValidaHorarioLivreProfissional(Agendamento agendamento)
         {
-            Contexto contexto = new Contexto();
+
+            Profissional profissional = prof.profissionalDiasemana(agendamento);
 
             DateTime inicioConsulta = agendamento.HoraConsulta.AddMinutes(-agendamento.TempoEmMinutosConsulta);
             DateTime terminoConsulta = agendamento.HoraConsulta.AddMinutes(agendamento.TempoEmMinutosConsulta);
 
-            var a = (from x in contexto.Agendamentos
-                     where x.ProfissionalID.Equals(agendamento.ProfissionalID) &&
+            var a = (from x in db.Agendamentos
+                     where x.AgendamentoID.Equals(agendamento.ProfissionalID) &&
                      (x.HoraConsulta > inicioConsulta && x.HoraConsulta < terminoConsulta)
                      select x).ToList();
 
@@ -264,12 +263,12 @@ namespace Agenda_Consulta_Web.Controllers
 
         public bool ValidaHorarioLivreLocal(Agendamento agendamento)
         {
-            Contexto contexto = new Contexto();
+            LocalViewModel local = localModels.localDiasemana(agendamento);
 
             DateTime inicioConsulta = agendamento.HoraConsulta.AddMinutes(-agendamento.TempoEmMinutosConsulta);
             DateTime terminoConsulta = agendamento.HoraConsulta.AddMinutes(agendamento.TempoEmMinutosConsulta);
 
-            var a = (from x in contexto.Agendamentos
+            var a = (from x in db.Agendamentos
                      where x.LocalViewModelID.Equals(agendamento.LocalViewModelID) &&
                      (x.HoraConsulta > inicioConsulta && x.HoraConsulta < terminoConsulta)
                      select x).ToList();
